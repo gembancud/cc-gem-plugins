@@ -1,0 +1,10 @@
+# Cache and temp files
+cache/
+.DS_Store
+*.log
+
+# Claude Code internal files (local config, not for sharing)
+config.json
+installed_plugins.json
+known_marketplaces.json
+marketplaces/

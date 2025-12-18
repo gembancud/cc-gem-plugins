@@ -1,0 +1,19 @@
+{
+  "name": "gem-plugins",
+  "owner": {
+    "name": "Gil Emmanuel Bancud",
+    "email": "gembancud@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "arctan",
+      "source": "./arctan",
+      "description": "Orchestrated feature development with multi-agent pipelines (Explore → Plan → Refine → Implement → Review)",
+      "version": "1.0.0",
+      "author": {
+        "name": "Gil Emmanuel Bancud",
+        "email": "gembancud@gmail.com"
+      }
+    }
+  ]
+}

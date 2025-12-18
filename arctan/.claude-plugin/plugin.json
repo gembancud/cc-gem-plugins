@@ -1,0 +1,5 @@
+{
+  "name": "arctan",
+  "version": "1.0.0",
+  "description": "Orchestrated feature development with multi-agent pipelines (Explore → Plan → Refine → Implement → Review)"
+}
