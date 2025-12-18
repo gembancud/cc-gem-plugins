@@ -48,14 +48,37 @@ A Claude Code plugin marketplace by Gil Emmanuel Bancud.
 ## Workflow
 
 ```
-/arctan ──→ Test ──→ /tan ──→ Done
-   │                   │
-   └── implement ──────┴── refine
+                    ┌─────────┐
+                    ↓         │
+/arctan ──→ Test ──→ /tan ──→ Test
+              │
+              ↓
+            Done
 ```
 
 1. **`/arctan`** — Plan and implement your feature
 2. **Test** — Try it out, find edge cases
-3. **`/tan`** — Fix issues while staying aligned with the plan
+3. **`/tan`** — Fix issues, loop back to testing until done
+
+---
+
+## How It Works
+
+arctan uses **subagents** to keep your main conversation context light:
+
+```
+Main Agent (orchestrator)
+    │
+    ├──→ Explore Agent (Haiku) ──→ returns context summary
+    ├──→ Plan Agent (Opus) ──→ returns architecture
+    ├──→ You + EnterPlanMode ──→ refine together
+    ├──→ Implement Agent (Opus) ──→ writes code
+    └──→ Review Agent (Opus) ──→ catches issues
+```
+
+Subagents do the heavy lifting—reading files, gathering context, writing code—and return concise results. Your main thread stays focused on decisions, not details.
+
+This means **fewer human touchpoints** without sacrificing planning quality. The agents handle context; you handle direction.
 
 ---
 
@@ -63,11 +86,11 @@ A Claude Code plugin marketplace by Gil Emmanuel Bancud.
 
 Built on ideas from Anthropic's [feature-dev](https://github.com/anthropics/claude-code/tree/main/plugins/feature-dev) plugin (7 phases, multiple checkpoints).
 
-arctan optimizes for speed:
+arctan optimizes differently:
 
 - **Single interaction point** — One planning dialogue via `EnterPlanMode` instead of 4+ checkpoints
-- **Native planning mode** — Uses Claude Code's built-in planning tool
-- **Faster iteration** — Less context-switching, same agent-driven context control
+- **Subagent architecture** — Heavy context work happens off the main thread
+- **Faster iteration** — Less context-switching, same quality planning
 
 ---
 
