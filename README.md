@@ -2,82 +2,75 @@
 
 A Claude Code plugin marketplace by Gil Emmanuel Bancud.
 
-## Installation
-
 ```
 /plugin marketplace add https://github.com/gembancud/cc-gem-plugins
 ```
 
 ---
 
-## arctan
+<div align="center">
 
 ![arctan logo](arctan-logo.jpeg)
 
-### The Name
+**Plan before you code. Fix without losing context.**
 
-**Tangent** represents going off on a tangent—diving straight into code without a plan. **Arctan** (arctangent) is the inverse: stepping back to plan before implementing. **Tan** then refines what arctan produced.
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-### Commands
-
-#### `/arctan <feature-description>`
-
-Full feature development pipeline. Use this when starting new features.
-
-```
-Explore (Haiku) → Plan (Opus) → Refine (You + Opus) → Implement (Opus) → Review (Opus)
-```
-
-**When to use:**
-- New feature implementation
-- Complex changes spanning multiple files
-- When you want structured planning before coding
-
-**Example:**
-```
-/arctan add user authentication with JWT tokens
-```
+</div>
 
 ---
 
-#### `/tan <issue-description>`
+## The Name
 
-Fix and review loop. Use this after `/arctan` to address issues found during testing.
+**Tangent** — going off on a tangent, diving straight into code without a plan.
+**Arctan** — the inverse: stepping back to plan before implementing.
+**Tan** — refining what arctan produced.
 
+---
+
+## Commands
+
+| | `/arctan <feature>` | `/tan <issue>` |
+|---|---|---|
+| **Purpose** | Build new features | Fix issues after implementation |
+| **Pipeline** | Explore → Plan → Refine → Implement → Review | Clarify → Fix → Review → Iterate |
+| **Interaction** | One planning session with you | Checkpoints when ambiguous |
+| **Best for** | New features, multi-file changes | Bugs, refinements, edge cases |
+
+**Examples:**
 ```
-Clarify → Fix (Opus) → Review against plan (Opus) → Done or iterate
-```
-
-**When to use:**
-- Bugs discovered after implementation
-- Behavior that doesn't match expectations
-- Refinements to recently implemented features
-
-**Example:**
-```
+/arctan add user authentication with JWT tokens
 /tan login fails when email contains a plus sign
 ```
 
 ---
 
-### Workflow
+## Workflow
 
-1. **Start with `/arctan`** — Plan and implement your feature
-2. **Test the implementation** — Try it out, find edge cases
-3. **Use `/tan` for fixes** — Address issues while staying aligned with the original plan
+```
+/arctan ──→ Test ──→ /tan ──→ Done
+   │                   │
+   └── implement ──────┴── refine
+```
 
-### Inspiration
+1. **`/arctan`** — Plan and implement your feature
+2. **Test** — Try it out, find edge cases
+3. **`/tan`** — Fix issues while staying aligned with the plan
 
-arctan is inspired by Anthropic's [feature-dev](https://github.com/anthropics/claude-code/tree/main/plugins/feature-dev) plugin, which provides a thorough 7-phase workflow with multiple checkpoints for user input.
+---
 
-arctan takes a different approach:
+## Inspiration
 
-- **Single interaction point** — feature-dev asks for input at discovery, clarification, architecture selection, implementation approval, and review decisions. arctan consolidates this into one dialogue during plan refinement via `EnterPlanMode`.
-- **Uses native planning mode** — Rather than a custom multi-option architecture phase, arctan leverages Claude Code's built-in `EnterPlanMode` tool where you and the agent refine the plan together until you're satisfied.
-- **Faster iteration** — Fewer touchpoints means less context-switching. The agent gathers context, proposes a plan, you refine it once, then it executes.
+Built on ideas from Anthropic's [feature-dev](https://github.com/anthropics/claude-code/tree/main/plugins/feature-dev) plugin (7 phases, multiple checkpoints).
 
-Both approaches use agents to manage context properly. arctan just optimizes for speed when you trust the exploration and want to get to the collaborative planning faster.
+arctan optimizes for speed:
+
+- **Single interaction point** — One planning dialogue via `EnterPlanMode` instead of 4+ checkpoints
+- **Native planning mode** — Uses Claude Code's built-in planning tool
+- **Faster iteration** — Less context-switching, same agent-driven context control
+
+---
 
 ## License
 
-MIT
+[MIT](LICENSE)
