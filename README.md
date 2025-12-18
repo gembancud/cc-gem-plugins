@@ -1,30 +1,70 @@
 # gem-plugins
 
-A collection of Claude Code plugins by Gil Emmanuel Bancud.
+A Claude Code plugin marketplace by Gil Emmanuel Bancud.
 
 ## Installation
-
-Add this marketplace to Claude Code:
 
 ```
 /plugin marketplace add https://github.com/gembancud/cc-gem-plugins
 ```
 
-Then install plugins:
+---
+
+## arctan
+
+![arctan logo](arctan-logo.jpeg)
+
+### The Name
+
+**Tangent** represents going off on a tangent—diving straight into code without a plan. **Arctan** (arctangent) is the inverse: stepping back to plan before implementing. **Tan** then refines what arctan produced.
+
+### Commands
+
+#### `/arctan <feature-description>`
+
+Full feature development pipeline. Use this when starting new features.
 
 ```
-/plugin install arctan@gem-plugins
+Explore (Haiku) → Plan (Opus) → Refine (You + Opus) → Implement (Opus) → Review (Opus)
 ```
 
-## Available Plugins
+**When to use:**
+- New feature implementation
+- Complex changes spanning multiple files
+- When you want structured planning before coding
 
-### arctan
+**Example:**
+```
+/arctan add user authentication with JWT tokens
+```
 
-Orchestrated feature development with multi-agent pipelines.
+---
 
-**Commands:**
-- `/arctan:arctan <feature-description>` - Full feature development pipeline (Explore → Plan → Refine → Implement → Review)
-- `/arctan:tan <issue-description>` - Fix and review loop with clarification checkpoints
+#### `/tan <issue-description>`
+
+Fix and review loop. Use this after `/arctan` to address issues found during testing.
+
+```
+Clarify → Fix (Opus) → Review against plan (Opus) → Done or iterate
+```
+
+**When to use:**
+- Bugs discovered after implementation
+- Behavior that doesn't match expectations
+- Refinements to recently implemented features
+
+**Example:**
+```
+/tan login fails when email contains a plus sign
+```
+
+---
+
+### Workflow
+
+1. **Start with `/arctan`** — Plan and implement your feature
+2. **Test the implementation** — Try it out, find edge cases
+3. **Use `/tan` for fixes** — Address issues while staying aligned with the original plan
 
 ## License
 
