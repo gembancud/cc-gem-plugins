@@ -64,7 +64,9 @@ A Claude Code plugin marketplace by Gil Emmanuel Bancud.
 
 ## How It Works
 
-arctan uses **subagents** to keep your main conversation context light:
+### `/arctan` — Build
+
+Uses **subagents** to keep your main conversation context light:
 
 ```
 Main Agent (orchestrator)
@@ -78,7 +80,23 @@ Main Agent (orchestrator)
 
 Subagents do the heavy lifting—reading files, gathering context, writing code—and return concise results. Your main thread stays focused on decisions, not details.
 
-This means **fewer human touchpoints** without sacrificing planning quality. The agents handle context; you handle direction.
+### `/tan` — Refine
+
+A lighter workflow for fixing issues found after `/arctan`:
+
+```
+Main Agent (orchestrator)
+    │
+    ├──→ Explore Agent (Haiku) ──→ quick context (if needed)
+    ├──→ Fix Agent (Opus) ──→ implements fix
+    └──→ Review Agent (Opus) ──→ checks plan alignment
+```
+
+`/tan` stays aligned with the original plan from `/arctan`. The review agent checks that fixes don't drift from the architecture you approved.
+
+---
+
+**Fewer human touchpoints** without sacrificing planning quality. The agents handle context; you handle direction.
 
 ---
 
