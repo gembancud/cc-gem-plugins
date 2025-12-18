@@ -7,7 +7,7 @@ A collection of Claude Code plugins by Gil Emmanuel Bancud.
 Add this marketplace to Claude Code:
 
 ```
-/plugin marketplace add https://github.com/gembancud/gem-plugins
+/plugin marketplace add https://github.com/gembancud/cc-gem-plugins
 ```
 
 Then install plugins:
